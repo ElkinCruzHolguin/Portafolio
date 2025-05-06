@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Portafolio - Desarrollador Web</title>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background-color: #13505b;
+      font-family: sans-serif;
+      color: #d7d9ce;
+    }
+
+    nav {
+      width: 20vw;
+      height: 100vh;
+      background-color: #040404;
+      color: #d7d9ce;
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding-top: 20px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    nav div {
+      padding: 15px 20px;
+      margin: 0;
+      cursor: pointer;
+    }
+
+    nav div:hover {
+      background-color: #1f1f1f;
+    }
+
+    .menu-toggle {
+      display: none;
+      background-color: #040404;
+      color: #d7d9ce;
+      padding: 10px 20px;
+      cursor: pointer;
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 999;
+    }
+
+    main {
+      margin-left: 20vw;
+      padding: 40px;
+    }
+
+    .intro {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #13505b;
+      padding: 30px;
+      border-radius: 10px;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .intro-text {
+      flex: 1 1 300px;
+      text-align: justify;
+    }
+
+    .intro-text h1 {
+      margin-top: 0;
+      color: #ffffff;
+    }
+
+    .intro-text p {
+      font-size: 1.1em;
+      line-height: 1.5;
+    }
+
+    .intro-image {
+      flex: 1 1 300px;
+      text-align: center;
+    }
+
+    .intro-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    section {
+      padding: 60px 20px;
+      margin-top: 40px;
+    
+      border-radius: 10px;
+    }
+
+    section h2 {
+      margin-top: 0;
+      color: #ffffff;
+      font-size: 2em;
+      border-bottom: 2px solid #ffffff55;
+      padding-bottom: 10px;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        transform: translateX(-100%);
+      }
+
+      nav.active {
+        transform: translateX(0);
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      main {
+        margin-left: 0;
+        padding: 80px 20px 20px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="menu-toggle" onclick="toggleMenu()">☰ Menú</div>
+
+  <nav id="sidebar">
+    <div onclick="scrollToSection('inicio')">Inicio</div>
+    <div onclick="scrollToSection('habilidades')">Habilidades</div>
+    <div onclick="scrollToSection('blandas')">Habilidades blandas</div>
+    <div onclick="scrollToSection('experiencia')">Experiencia</div>
+    <div onclick="scrollToSection('formacion')">Formación</div>
+  </nav>
+
+  <main>
+    <div id="inicio" class="intro">
+      <div class="intro-text">
+        <h1>¡Hola! Soy un Desarrollador Web</h1>
+        <p>
+          Apasionado por la programación, el diseño de soluciones y el poder de las matemáticas para resolver problemas del mundo real. Me encanta construir sitios web funcionales y creativos, aprendiendo cada día nuevas tecnologías y técnicas para mejorar como profesional.
+        </p>
+      </div>
+      <div class="intro-image">
+        <img src="ruta-de-tu-imagen.jpg" alt="Ilustración de programador con símbolos matemáticos">
+      </div>
+    </div>
+
+    <section id="habilidades">
+      <h2>Habilidades Técnicas</h2>
+      <p>Lenguajes: HTML, CSS, JavaScript, Python.<br> Frameworks: Bootstrap, jQuery.<br> Control de versiones: Git y GitHub.</p>
+    </section>
+
+    <section id="blandas">
+      <h2>Habilidades Blandas</h2>
+      <p>Comunicación efectiva, pensamiento lógico, trabajo en equipo, resolución de problemas.</p>
+    </section>
+
+    <section id="experiencia">
+      <h2>Experiencia</h2>
+      <p>Participación en proyectos académicos y personales, creación de sitios web para uso educativo, colaboración en iniciativas estudiantiles.</p>
+    </section>
+
+    <section id="formacion">
+      <h2>Formación Académica</h2>
+      <p>Estudios en desarrollo web, cursos de matemáticas aplicadas, formación autodidacta continua.</p>
+    </section>
+  </main>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById('sidebar');
+      nav.classList.toggle('active');
+    }
+
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+      const nav = document.getElementById('sidebar');
+      if (window.innerWidth <= 768) {
+        nav.classList.remove('active');
+      }
+    }
+  </script>
+
+</body>
+</html>
