@@ -81,7 +81,7 @@
     }
 
     .intro-image {
-      flex: 1 1 300px;
+      flex: 0 0 300px;
       text-align: center;
     }
 
@@ -105,6 +105,97 @@
       border-bottom: 2px solid #ffffff55;
       padding-bottom: 10px;
     }
+    .correo-container button {
+        margin-left: 10px;
+        padding: 5px 10px;
+        cursor: pointer;
+        background-color: #ffffff22;
+        border: none;
+        border-radius: 5px;
+        color: #ffffff;
+        transition: background-color 0.2s ease;
+      }
+
+      .correo-container button:hover {
+        background-color: #ffffff44;
+      }
+      .descargar-btn {
+        display: inline-block;
+        margin-left: 10px;
+        margin-top: 10px;
+        padding: 6px 12px;
+        background-color: #ffffff22;
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.2s ease;
+      }
+
+      .descargar-btn:hover {
+        background-color: #ffffff44;
+      }
+      .card-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        margin-top: 20px;
+      }
+
+      .flip-card {
+        background-color: transparent;
+        width: 150px;
+        height: 200px;
+        perspective: 1000px;
+      }
+
+      .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+      }
+
+      .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+      }
+
+      .flip-card-front, .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 10px;
+        padding: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      }
+
+      .flip-card-front {
+        background-color: #ffffff11;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .flip-card-front img {
+        max-width: 80px;
+        height: auto;
+      }
+
+      .flip-card-back {
+        background-color: #1f1f1f;
+        color: white;
+        transform: rotateY(180deg);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+
 
     @media (max-width: 768px) {
       nav {
@@ -123,6 +214,8 @@
         margin-left: 0;
         padding: 80px 20px 20px 20px;
       }
+      
+
     }
   </style>
 </head>
@@ -141,18 +234,75 @@
   <main>
     <div id="inicio" class="intro">
       <div class="intro-text">
-        <h1>¡Hola! Soy un Desarrollador Web</h1>
+        <h1>Elkin Gillermo Cruz Holguin</h1>
         <p>
-          Apasionado por la programación, el diseño de soluciones y el poder de las matemáticas para resolver problemas del mundo real. Me encanta construir sitios web funcionales y creativos, aprendiendo cada día nuevas tecnologías y técnicas para mejorar como profesional.
+          ¡Hola! Soy un Desarrollador Web Apasionado por la programación, el diseño de soluciones y el poder de las matemáticas para resolver problemas del mundo real. Me encanta construir sitios web funcionales y creativos, aprendiendo cada día nuevas tecnologías y técnicas para mejorar como profesional.
         </p>
+        <div class="correo-container">
+          <strong>Correo:</strong>
+          <span id="correo-text">cruzholguinelkinguillermo@gmail.com</span>
+          <button onclick="copiarCorreo()">Copiar</button>
+        </div>
+        <a href="docs/Elkin Cruz CV.pdf" download class="descargar-btn">Descargar Hoja de Vida</a>
+
+
+
       </div>
       <div class="intro-image">
-        <img src="ruta-de-tu-imagen.jpg" alt="Ilustración de programador con símbolos matemáticos">
+        <img src="img/img animada.png" alt="Ilustración de programador con símbolos matemáticos">
       </div>
     </div>
 
     <section id="habilidades">
       <h2>Habilidades Técnicas</h2>
+  <div class="card-grid">
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="img/html.png" alt="HTML">
+        </div>
+        <div class="flip-card-back">
+          <h3>HTML</h3>
+          <p>Avanzado</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="img/CSS.png" alt="CSS">
+        </div>
+        <div class="flip-card-back">
+          <h3>CSS</h3>
+          <p>Intermedio</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="img/Javascript.png" alt="JavaScript">
+        </div>
+        <div class="flip-card-back">
+          <h3>CSS</h3>
+          <p>Intermedio</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="img/Python.png" alt="Python">
+        </div>
+        <div class="flip-card-back">
+          <h3>CSS</h3>
+          <p>Intermedio</p>
+        </div>
+      </div>
+    </div>
       <p>Lenguajes: HTML, CSS, JavaScript, Python.<br> Frameworks: Bootstrap, jQuery.<br> Control de versiones: Git y GitHub.</p>
     </section>
 
@@ -185,6 +335,24 @@
         nav.classList.remove('active');
       }
     }
+    
+    function copiarCorreo() {
+      const correo = document.getElementById("correo-text").innerText;
+      const boton = event.target;
+
+      navigator.clipboard.writeText(correo)
+        .then(() => {
+          boton.textContent = "¡Copiado!";
+          setTimeout(() => {
+            boton.textContent = "Copiar";
+          }, 2000); // vuelve a "Copiar" después de 2 segundos
+        })
+        .catch(() => {
+          alert("No se pudo copiar el correo");
+        });
+    }
+
+
   </script>
 
 </body>
